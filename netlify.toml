@@ -1,0 +1,3 @@
+[build]
+  base = "Pages-1"    # The base directory where your site is located
+  publish = "Pages-1/build"   # The directory where your build output is located
