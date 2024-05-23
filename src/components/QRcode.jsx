@@ -1,9 +1,9 @@
+// src/components/QRCode.jsx
 import React from 'react';
 import QRCode from 'qrcode.react';
 
 const QRCodeComponent = () => {
-  // Full URL to the hosted website's button route
-  const redirectUrl = "https://pages-1-beta.vercel.app/button"; 
+  const redirectUrl = "http://yourwebsite.com/button";  // Update with your actual URL
 
   return (
     <div>
@@ -14,3 +14,4 @@ const QRCodeComponent = () => {
 };
 
 export default QRCodeComponent;
+

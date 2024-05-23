@@ -1,7 +1,29 @@
-import React from 'react';
+// src/pages/Images.jsx
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
-const ImagesPage = ({ bulbOn, curtainOpen }) => {
+const socket = io('http://localhost:3000');
+
+const ImagesPage = () => {
+  const [bulbOn, setBulbOn] = useState(false);
+  const [curtainOpen, setCurtainOpen] = useState(false);
+
+  useEffect(() => {
+    socket.on('toggleBulb', () => {
+      setBulbOn(prev => !prev);
+    });
+
+    socket.on('toggleCurtain', () => {
+      setCurtainOpen(prev => !prev);
+    });
+
+    return () => {
+      socket.off('toggleBulb');
+      socket.off('toggleCurtain');
+    };
+  }, []);
+
   return (
     <div>
       <h1>Images Page</h1>

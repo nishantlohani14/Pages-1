@@ -1,7 +1,19 @@
+// src/pages/Buttons.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
-const ButtonsPage = ({ toggleBulb, toggleCurtain }) => {
+const socket = io('http://localhost:3000');
+
+const ButtonsPage = () => {
+  const toggleBulb = () => {
+    socket.emit('toggleBulb');
+  };
+
+  const toggleCurtain = () => {
+    socket.emit('toggleCurtain');
+  };
+
   return (
     <div className="buttons-container">
       <h1>Buttons Page</h1>
